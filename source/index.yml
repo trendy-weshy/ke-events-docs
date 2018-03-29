@@ -1,16 +1,18 @@
 title: Events254 API Documentation
 
 language_tabs:
-  - TypeScript
-  - JSON
+  - typescript
+  - json
 
 toc_footers:
   - <a href='mailto:waweruj00@gmail.com' target='__blank'>Request for a Developer Key</a>
+  - <a href='mailto:wambugu.john.waweru@outlook.com' target='__blank'>Something went wrong ? Contact Developer</a>
   # - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
   - _authentication
   - _events-api
+  - _api-errors
   # - main
   # - _errors
 
