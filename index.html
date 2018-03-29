@@ -1,230 +1,458 @@
+
 <!doctype html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Events254 API Documentation</title>
+
     <link href="stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
     <link href="stylesheets/highlight-monokai.css" rel="stylesheet" type="text/css" media="screen, print" />
     <script src="javascripts/all.js" type="text/javascript"></script>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
   </head>
-  <body class="" data-languages="[&#34;bash&#34;,&#34;ruby&#34;,&#34;python&#34;,&#34;javascript&#34;]">
+
+  <body class="" data-languages="[&#34;typescript&#34;,&#34;json&#34;]">
     <a href="#" id="nav-button">
-      <span> NAV
-        <img alt="undefined" class="undefined" src="images/navbar.png"> </span>
+      <span>
+        NAV
+        <img alt="undefined" class="undefined" src="images/navbar.png">
+      </span>
     </a>
     <div class="tocify-wrapper">
-      <img alt="undefined" class="undefined" src="images/logo.png">
-      <div class="lang-selector">
-        <a href="#" data-language-name="bash">bash</a>
-        <a href="#" data-language-name="ruby">ruby</a>
-        <a href="#" data-language-name="python">python</a>
-        <a href="#" data-language-name="javascript">javascript</a>
+      <!-- <img alt="undefined" class="undefined" src="images/logo.png"> -->
+      <!-- <span style="margin-top: 10px !important; margin-bottom: 10px !important;"></span> -->
+      
+        <div class="lang-selector">
+          
+            <a href="#" data-language-name="typescript">typescript</a>
+          
+            <a href="#" data-language-name="json">json</a>
+          
+        </div>
+      
+      
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      
+      <div id="toc">
       </div>
-      <div class="search">
-        <input type="text" class="search" id="input-search" placeholder="Search"> </div>
-      <ul class="search-results"></ul>
-      <div id="toc"> </div>
-      <ul class="toc-footer">
-        <li>
-          <a href='#'>Sign Up for a Developer Key</a>
-        </li>
-        <li>
-          <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
-        </li>
-      </ul>
+      
+        <ul class="toc-footer">
+          
+            <li><a href='mailto:waweruj00@gmail.com' target='__blank' style='font-size:14px;text-align:center;color:#fb8c00;display:block;text-decoration:none;'><i class='fas fa-connectdevelop'></i> Contact Developer</a></li>
+          
+        </ul>
+      
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="introduction">Introduction</h1>
-        <p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
-        <p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-        <p>This example API documentation page was created with
-          <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-        <h1 id="authentication">Authentication</h1>
-        <blockquote>
-          <p>To authorize, use this code:</p>
-        </blockquote> <pre class="highlight ruby"><code><span class="hljs-keyword">require</span> <span class="hljs-string">'kittn'</span>
+        
+          <h1 id="authentication-module">Authentication Module</h1>
+<p>The Events254 API provides developer authentication and authorization. It will also provide user authentication
+as well as user management features with access control in built.</p>
+<aside class="warning">
+    User authentication and authorization is not yet implemented. See roadmap for more details.
+</aside>
 
-api = Kittn::APIClient.authorize!(<span class="hljs-string">'meowmeowmeow'</span>)</code></pre><pre class="highlight python"><code><span class="hljs-keyword">import</span> kittn
+<h2 id="developer-apps-api">Developer Apps API</h2>
+<aside class="notice">
+    You require an <strong>appID</strong> and <strong>appSecret</strong> in order to access the API. They are provided by the developer.
+    <a href='mailto:waweruj00@gmail.com' target='__blank' style='color: white;text-decoration: none;font-weight: 500;text-shadow: none;'>Request for a Developer Key</a>
+</aside>
 
-api = kittn.authorize(<span class="hljs-string">'meowmeowmeow'</span>)</code></pre><pre class="highlight bash"><code><span class="hljs-comment"># With shell, you can just pass the correct header with each request</span>
-curl <span class="hljs-string">"api_endpoint_here"</span>
-  -H <span class="hljs-string">"Authorization: meowmeowmeow"</span></code></pre><pre class="highlight javascript"><code><span class="hljs-keyword">const</span> kittn = <span class="hljs-built_in">require</span>(<span class="hljs-string">'kittn'</span>);
+<blockquote>
+<p>App Authentication Header Interface <em>[x-auth-]</em></p>
+</blockquote>
+<pre class="highlight typescript"><code><span class="hljs-keyword">interface</span> AppAuthObject {
+    [<span class="hljs-string">'app-id'</span>]: <span class="hljs-built_in">string</span>;
+    [<span class="hljs-string">'app-token'</span>]: <span class="hljs-built_in">string</span>;
+}</code></pre><blockquote>
+<p>Example app authentication header <em>[x-auth-]</em></p>
+</blockquote>
+<pre class="highlight json"><code>{
+    <span class="hljs-attr">"x-auth-app-id"</span>: <span class="hljs-string">"ce8d8973e57b723e7ed38f05"</span>,
+    <span class="hljs-attr">"x-auth-app-token"</span>: <span class="hljs-string">"9wplAMtYy5Tysa2||E8Er03YwNzdPTjMW8bGDyXFVzeg"</span>
+}</code></pre><h3 id="request-headers">Request Headers</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>x-auth-app-id</strong></td>
+<td>This should contain your app id</td>
+<td><strong>required</strong></td>
+</tr>
+<tr>
+<td><strong>x-auth-app-token</strong></td>
+<td>This should container your app token</td>
+<td><strong>required</strong></td>
+</tr>
+</tbody>
+</table>
+<aside class="notice">
+    The above stated headers are required in order to consume the API. It ensures that the requests being sent to the API are secure and from trusted sources.
+    If you haven&#39;t yet got your <strong>appID</strong> and <strong>appSecret</strong>, please contact the developer:-
+    <a href='mailto:waweruj00@gmail.com' target='__blank' style='color: white;text-decoration: none;font-weight: 500;text-shadow: none;'>Request for a Developer Key</a>
+</aside>
 
-<span class="hljs-keyword">let</span> api = kittn.authorize(<span class="hljs-string">'meowmeowmeow'</span>);</code></pre>
-        <blockquote>
-          <p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-        </blockquote>
-        <p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our
-          <a href="http://example.com/developers">developer portal</a>.</p>
-        <p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-        <p><code>Authorization: meowmeowmeow</code></p>
-        <aside class="notice"> You must replace <code>meowmeowmeow</code> with your personal API key. </aside>
-        <h1 id="kittens">Kittens</h1>
-        <h2 id="get-all-kittens">Get All Kittens</h2> <pre class="highlight ruby"><code><span class="hljs-keyword">require</span> <span class="hljs-string">'kittn'</span>
+        
+          <h1 id="events-api-module">Events API Module</h1>
+<p>This is the main module for the api as it serves Kenyan events data. It powers Events254 app.</p>
+<pre class="highlight typescript"><code><span class="hljs-keyword">interface</span> Event {
+    <span class="hljs-string">"_id"</span>: <span class="hljs-built_in">string</span>, <span class="hljs-comment">// Database ID</span>
+    <span class="hljs-string">"link"</span>: <span class="hljs-built_in">string</span>, <span class="hljs-comment">// HTTP link to learn more about the event</span>
+    <span class="hljs-string">"image"</span>: <span class="hljs-built_in">string</span>, <span class="hljs-comment">// An image link for the event's poster</span>
+    <span class="hljs-string">"title"</span>: <span class="hljs-built_in">string</span>, <span class="hljs-comment">// The title of the event</span>
+    <span class="hljs-string">"about"</span>: <span class="hljs-built_in">string</span>, <span class="hljs-comment">// An overview of the Events and its description</span>
+    <span class="hljs-string">"map"</span>: <span class="hljs-built_in">string</span>, <span class="hljs-comment">// A google maps link to the location of the event</span>
+    <span class="hljs-string">"location"</span>: <span class="hljs-built_in">string</span>, <span class="hljs-comment">// Where the event will be held (A Formatted Address)</span>
+    <span class="hljs-string">"twitter"</span>: <span class="hljs-built_in">string</span>, <span class="hljs-comment">// Twitter link for sharing about the event</span>
+    <span class="hljs-string">"whatsapp"</span>: <span class="hljs-built_in">string</span>, <span class="hljs-comment">// Deeplink for sending whatsapp message about the event</span>
+    <span class="hljs-string">"google_plus"</span>: <span class="hljs-built_in">string</span>, <span class="hljs-comment">// Google plus link for sharing about the event</span>
+    <span class="hljs-string">"start"</span>: <span class="hljs-built_in">Date</span>, <span class="hljs-comment">// When the event is supposed to start (isISOString)</span>
+    <span class="hljs-string">"end"</span>: <span class="hljs-built_in">Date</span>, <span class="hljs-comment">// When the event is supposed to end (isISOString)</span>
+    <span class="hljs-string">"createdAt"</span>: <span class="hljs-built_in">Date</span>, <span class="hljs-comment">// When was the event recorded to the database (isISOString)</span>
+    <span class="hljs-string">"updatedAt"</span>: <span class="hljs-built_in">Date</span> <span class="hljs-comment">// When was the event record last updated (isISOString)</span>
+};</code></pre><aside class="notice">
+    Please note that for every request you make you require the following headers included: <strong>x-auth-app-id</strong> and <strong>x-auth-app-token</strong>. Please visit the <a href="/#authentication-module" style='color: white;text-decoration: none;font-weight: 500;text-shadow: none;'>The Authentication Section</a> for more.
+</aside>
 
-api = Kittn::APIClient.authorize!(<span class="hljs-string">'meowmeowmeow'</span>)
-api.kittens.get</code></pre><pre class="highlight python"><code><span class="hljs-keyword">import</span> kittn
+<p>List of Routes Available</p>
+<ol>
+<li><strong>[GET]</strong> <code>/api/v1/events/q/:by</code> - Query for a paginated list of events</li>
+<li><strong>[GET]</strong> <code>/api/v1/events/get/:by</code> - Get a list of events</li>
+<li><strong>[GET]</strong> <code>/api/v1/events/location</code> - Get a list of Event Location</li>
+<li><strong>[GET]</strong> <code>/api/v1/events/ping</code> - Test Events API</li>
+<li><strong>[GET]</strong> <code>/api/v1/events/:id</code> - Get a single event</li>
+</ol>
+<h2 id="test-events-api">Test Events API</h2>
+<p>Use this route if you want to test whether the API is online and working.</p>
+<blockquote>
+<p>Ping interface</p>
+</blockquote>
+<pre class="highlight typescript"><code><span class="hljs-keyword">interface</span> PingObject {
+    payload: <span class="hljs-built_in">string</span>;
+    timestamp: <span class="hljs-built_in">Date</span>;
+}</code></pre><blockquote>
+<p>Example ping response</p>
+</blockquote>
+<pre class="highlight json"><code>{
+    <span class="hljs-attr">"payload"</span>: <span class="hljs-string">"0chwzYWLATM34L6/2tfb"</span>,
+    <span class="hljs-attr">"timestamp"</span>: <span class="hljs-string">"2018-03-29T01:05:42.269Z"</span>
+}</code></pre><h3 id="route">Route</h3>
+<p><code>[GET] /api/v1/events/ping</code></p>
+<h3 id="response-object">Response Object</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>payload</strong></td>
+<td>string</td>
+<td>A Base64 string</td>
+</tr>
+<tr>
+<td><strong>timestamp</strong></td>
+<td>Date</td>
+<td>A Date to LocaleDateString</td>
+</tr>
+</tbody>
+</table>
+<h2 id="get-list-of-events">Get list of Events</h2>
+<p>This route provides a list of events based on a <em>querystring</em> and uses either <strong>location</strong> or <strong>date</strong> as the primary query keys.</p>
+<h3 id="route">Route</h3>
+<p><code>[GET] /api/v1/events/get/:by</code></p>
+<h3 id="request-parameters">Request parameters</h3>
+<p>This is a request parameters i.e. /some-route/:by can translate to /some-route/location or /some-route/date.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>by</strong></td>
+<td>has only two options <strong>location</strong> and <strong>date</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="request-query">Request Query</h3>
+<p>This is a querystring i.e. /?key=1&amp;key2=the</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Status  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>event_loc</strong></td>
+<td>Name of location</td>
+<td><em>To be provided when the request parameter <strong>by</strong> above is <strong>location</strong></em></td>
+</tr>
+<tr>
+<td><strong>start_date</strong></td>
+<td>Begin date of an event</td>
+<td><em>To be provided when the request parameter <strong>by</strong> above is <strong>date</strong> and should follow the format: <strong>MM-DD-YYYY</strong></em></td>
+</tr>
+<tr>
+<td><strong>end_date</strong></td>
+<td>End date of an event</td>
+<td><em>Can be provided when the request parameter <strong>by</strong> above is <strong>date</strong> and should follow the format: <strong>MM-DD-YYYY</strong>.</em> This field is an <strong>Optional Query</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="response">Response</h3>
+<p>If the request is successful, the route will return a list of <a href="/#events-api-module"><strong>Events</strong></a>. No pagination is done. For server paginated records please visit the <strong>Query list of Events</strong> section for more about this.</p>
+<h2 id="query-list-of-events">Query list of Events</h2>
+<p>This route provides a list of events based on a <em>querystring</em> and uses either <strong>location</strong> or <strong>date</strong> as the query basis. This route is designed to returned paginated records. For each page requested the API provides a limited number of records.</p>
+<h3 id="route">Route</h3>
+<p><code>[GET] /api/v1/events/q/:by</code></p>
+<h3 id="request-parameters">Request parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>by</strong></td>
+<td>has only two options <code>location</code> and <code>date</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="request-query">Request Query</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>curr_page</strong></td>
+<td>The current page</td>
+<td><strong>required</strong> - should be a <code>Number</code></td>
+</tr>
+<tr>
+<td><strong>event_loc</strong></td>
+<td>Name of location</td>
+<td><em>To be provided when the request parameter <strong>by</strong> above is <code>location</code></em></td>
+</tr>
+<tr>
+<td><strong>start_date</strong></td>
+<td>Begin date of an event</td>
+<td><em>To be provided when the request parameter <strong>by</strong> above is <code>date</code> and should follow the format: <code>MM-DD-YYYY</code></em></td>
+</tr>
+<tr>
+<td><strong>end_date</strong></td>
+<td>End date of an event</td>
+<td><em>Can be provided when the request parameter <strong>by</strong> above is <code>date</code> and should follow the format: <code>MM-DD-YYYY</code>.</em> This field is an <strong>Optional Query</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="response-object">Response Object</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="/#events-api-module"><strong>[Event]</strong></a></td>
+<td>Contains an array of events</td>
+</tr>
+<tr>
+<td><strong>pagination</strong></td>
+<td>Object</td>
+<td><em>Contains metadata about the data queried</em></td>
+</tr>
+<tr>
+<td><strong>pagination.totalNumOfPages</strong></td>
+<td>number</td>
+<td>Total number of pages based on the query provided in the request and number of records per page</td>
+</tr>
+<tr>
+<td><strong>pagination.totalReturnedItems</strong></td>
+<td>number</td>
+<td>Total number of records in the present request</td>
+</tr>
+<tr>
+<td><strong>pagination.isLastPage</strong></td>
+<td>boolean</td>
+<td>Shows if the request has accessed the last page, therefore no more records can be queried for using the same query.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="get-list-of-event-locations">Get list of Event Locations</h2>
+<p>This route provides a list of event locations by aggregating the all event records. It&#39;s the simplest events api endpoint since it has no inputs <em>(Requesy Body)</em>, no <em>Query Strings</em> and no _Request Parameters.</p>
+<h3 id="route">Route</h3>
+<p><code>[GET] /api/v1/events/location</code></p>
+<h3 id="response">Response</h3>
+<p>An Array of Strings which are Event Locations.</p>
+<h2 id="get-event-details">Get Event Details</h2>
+<p>Use this route if you want a single event object.</p>
+<h3 id="route">Route</h3>
+<p><code>[GET] /api/v1/events/:id</code></p>
+<h3 id="request-parameters">Request parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>string</td>
+<td>The events <strong>Database ID</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="response">Response</h3>
+<p>Returns an <a href="/#events-api-module"><strong>Event</strong></a></p>
 
-api = kittn.authorize(<span class="hljs-string">'meowmeowmeow'</span>)
-api.kittens.get()</code></pre><pre class="highlight bash"><code>curl <span class="hljs-string">"http://example.com/api/kittens"</span>
-  -H <span class="hljs-string">"Authorization: meowmeowmeow"</span></code></pre><pre class="highlight javascript"><code><span class="hljs-keyword">const</span> kittn = <span class="hljs-built_in">require</span>(<span class="hljs-string">'kittn'</span>);
+        
+          <h1 id="api-errors">API Errors</h1>
+<p>This sections all the types of Errors the Api can generate. Some are outside the scope of the API so we will just mention them. Some of the errors out of scope is Database related Errors, Server related Errors and Code related Errors.</p>
+<blockquote>
+<p>Example of CreationError</p>
+</blockquote>
+<pre class="highlight typescript"><code><span class="hljs-comment">/*
+ * Errors out so as to support database \
+ * generated errors and api generated errors
+ */</span>
 
-<span class="hljs-keyword">let</span> api = kittn.authorize(<span class="hljs-string">'meowmeowmeow'</span>);
-<span class="hljs-keyword">let</span> kittens = api.kittens.get();</code></pre>
-        <blockquote>
-          <p>The above command returns JSON structured like this:</p>
-        </blockquote> <pre class="highlight json"><code>[
-  {
-    <span class="hljs-attr">"id"</span>: <span class="hljs-number">1</span>,
-    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Fluffums"</span>,
-    <span class="hljs-attr">"breed"</span>: <span class="hljs-string">"calico"</span>,
-    <span class="hljs-attr">"fluffiness"</span>: <span class="hljs-number">6</span>,
-    <span class="hljs-attr">"cuteness"</span>: <span class="hljs-number">7</span>
-  },
-  {
-    <span class="hljs-attr">"id"</span>: <span class="hljs-number">2</span>,
-    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Max"</span>,
-    <span class="hljs-attr">"breed"</span>: <span class="hljs-string">"unknown"</span>,
-    <span class="hljs-attr">"fluffiness"</span>: <span class="hljs-number">5</span>,
-    <span class="hljs-attr">"cuteness"</span>: <span class="hljs-number">10</span>
-  }
-]</code></pre>
-        <p>This endpoint retrieves all kittens.</p>
-        <h3 id="http-request">HTTP Request</h3>
-        <p><code>GET http://example.com/api/kittens</code></p>
-        <h3 id="query-parameters">Query Parameters</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Parameter</th>
-              <th>Default</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>include_cats</td>
-              <td>false</td>
-              <td>If set to true, the result will also include cats.</td>
-            </tr>
-            <tr>
-              <td>available</td>
-              <td>true</td>
-              <td>If set to false, the result will include kittens that have already been adopted.</td>
-            </tr>
-          </tbody>
-        </table>
-        <aside class="success"> Remember — a happy kitten is an authenticated kitten! </aside>
-        <h2 id="get-a-specific-kitten">Get a Specific Kitten</h2> <pre class="highlight ruby"><code><span class="hljs-keyword">require</span> <span class="hljs-string">'kittn'</span>
+<span class="hljs-keyword">const</span> err: <span class="hljs-built_in">any</span> = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>();
+err.status = <span class="hljs-number">500</span>;
+err.level = <span class="hljs-string">'error'</span>;
+err.name = <span class="hljs-string">'CreationError'</span>;
+err.message = e.message || <span class="hljs-string">'Something went wrong while saving events'</span>;
 
-api = Kittn::APIClient.authorize!(<span class="hljs-string">'meowmeowmeow'</span>)
-api.kittens.get(<span class="hljs-number">2</span>)</code></pre><pre class="highlight python"><code><span class="hljs-keyword">import</span> kittn
+<span class="hljs-keyword">throw</span> err;</code></pre><blockquote>
+<p>The data structure of an API Error.</p>
+</blockquote>
+<pre class="highlight typescript"><code><span class="hljs-keyword">interface</span> ApiError <span class="hljs-keyword">extends</span> Error { <span class="hljs-comment">/* extends Node.js Error */</span>
+    name: <span class="hljs-built_in">string</span>;
+    status: <span class="hljs-built_in">number</span>; <span class="hljs-comment">// HTTP Status Code</span>
+    message: <span class="hljs-built_in">string</span>;
+    level: <span class="hljs-string">'error'</span> | <span class="hljs-string">'info'</span> | <span class="hljs-string">'warning'</span>
+}</code></pre><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>level</th>
+<th>status</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CreationError</strong></td>
+<td><em>error</em></td>
+<td>500</td>
+<td>Error occurred while trying to save data in the database</td>
+</tr>
+<tr>
+<td><strong>EmptyRecord</strong></td>
+<td><em>warning</em></td>
+<td>404</td>
+<td>Shows the query returned an empty record, nothing was found</td>
+</tr>
+<tr>
+<td><strong>QueryError</strong></td>
+<td><em>error</em></td>
+<td>500</td>
+<td>Shows the query request lacks some requirement for it to be a full success e.g a missing query-param</td>
+</tr>
+<tr>
+<td><strong>RequestError</strong></td>
+<td><em>error</em></td>
+<td>400</td>
+<td>Shows during a POST, PUT or DELETE method request, some was missing hence could not complete the result</td>
+</tr>
+<tr>
+<td><strong>CredentialsError</strong></td>
+<td><em>critical</em></td>
+<td>401</td>
+<td>Shows that there is something wrong with the apps credentials passed in the headers</td>
+</tr>
+<tr>
+<td><strong>AuthorizationError</strong></td>
+<td><em>critical</em></td>
+<td>401</td>
+<td>Shows that there was a problem while trying to authorize app to access api data due to corrupt authentication details.</td>
+</tr>
+<tr>
+<td><strong>DuplicateRecord</strong></td>
+<td><em>error</em></td>
+<td>500</td>
+<td>Shows that the record trying to be saved already exists and only one copy can be recorded.</td>
+</tr>
+<tr>
+<td><strong>DecodeError</strong></td>
+<td><em>error</em></td>
+<td>500</td>
+<td>Shows that the apps hash secret could not be decoded</td>
+</tr>
+<tr>
+<td><strong>PaginationError</strong></td>
+<td><em>warning</em></td>
+<td>400</td>
+<td>Means there was a problem with trying to paginate from the query provided. Can be due to client expecting excess page that the total number of pages</td>
+</tr>
+<tr>
+<td><strong>DateRangeError</strong></td>
+<td>_error</td>
+<td>500</td>
+<td>Shows a problem rose when a date range was being configured so as to make the database query valid</td>
+</tr>
+</tbody>
+</table>
 
-api = kittn.authorize(<span class="hljs-string">'meowmeowmeow'</span>)
-api.kittens.get(<span class="hljs-number">2</span>)</code></pre><pre class="highlight bash"><code>curl <span class="hljs-string">"http://example.com/api/kittens/2"</span>
-  -H <span class="hljs-string">"Authorization: meowmeowmeow"</span></code></pre><pre class="highlight javascript"><code><span class="hljs-keyword">const</span> kittn = <span class="hljs-built_in">require</span>(<span class="hljs-string">'kittn'</span>);
-
-<span class="hljs-keyword">let</span> api = kittn.authorize(<span class="hljs-string">'meowmeowmeow'</span>);
-<span class="hljs-keyword">let</span> max = api.kittens.get(<span class="hljs-number">2</span>);</code></pre>
-        <blockquote>
-          <p>The above command returns JSON structured like this:</p>
-        </blockquote> <pre class="highlight json"><code>{
-  <span class="hljs-attr">"id"</span>: <span class="hljs-number">2</span>,
-  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Max"</span>,
-  <span class="hljs-attr">"breed"</span>: <span class="hljs-string">"unknown"</span>,
-  <span class="hljs-attr">"fluffiness"</span>: <span class="hljs-number">5</span>,
-  <span class="hljs-attr">"cuteness"</span>: <span class="hljs-number">10</span>
-}</code></pre>
-        <p>This endpoint retrieves a specific kitten.</p>
-        <aside class="warning">Inside HTML code blocks like this one, you can&#39;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-        <h3 id="http-request">HTTP Request</h3>
-        <p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-        <h3 id="url-parameters">URL Parameters</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Parameter</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>ID</td>
-              <td>The ID of the kitten to retrieve</td>
-            </tr>
-          </tbody>
-        </table>
-        <h1 id="errors">Errors</h1>
-        <aside class="notice">This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>&#39;s
-          frontmatter. Files are included in the order listed.</aside>
-        <p>The Kittn API uses the following error codes:</p>
-        <table>
-          <thead>
-            <tr>
-              <th>Error Code</th>
-              <th>Meaning</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>400</td>
-              <td>Bad Request -- Your request sucks</td>
-            </tr>
-            <tr>
-              <td>401</td>
-              <td>Unauthorized -- Your API key is wrong</td>
-            </tr>
-            <tr>
-              <td>403</td>
-              <td>Forbidden -- The kitten requested is hidden for administrators only</td>
-            </tr>
-            <tr>
-              <td>404</td>
-              <td>Not Found -- The specified kitten could not be found</td>
-            </tr>
-            <tr>
-              <td>405</td>
-              <td>Method Not Allowed -- You tried to access a kitten with an invalid method</td>
-            </tr>
-            <tr>
-              <td>406</td>
-              <td>Not Acceptable -- You requested a format that isn&#39;t json</td>
-            </tr>
-            <tr>
-              <td>410</td>
-              <td>Gone -- The kitten requested has been removed from our servers</td>
-            </tr>
-            <tr>
-              <td>418</td>
-              <td>I&#39;m a teapot</td>
-            </tr>
-            <tr>
-              <td>429</td>
-              <td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-            </tr>
-            <tr>
-              <td>500</td>
-              <td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-            </tr>
-            <tr>
-              <td>503</td>
-              <td>Service Unavailable -- We&#39;re temporarially offline for maintanance. Please try again later.</td>
-            </tr>
-          </tbody>
-        </table>
+        
       </div>
       <div class="dark-box">
-        <div class="lang-selector">
-          <a href="#" data-language-name="bash">bash</a>
-          <a href="#" data-language-name="ruby">ruby</a>
-          <a href="#" data-language-name="python">python</a>
-          <a href="#" data-language-name="javascript">javascript</a>
-        </div>
+        
+          <div class="lang-selector">
+            
+              <a href="#" data-language-name="typescript">typescript</a>
+            
+              <a href="#" data-language-name="json">json</a>
+            
+          </div>
+        
       </div>
     </div>
   </body>
