@@ -15,7 +15,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
   </head>
 
-  <body class="" data-languages="[&#34;typescript&#34;,&#34;json&#34;]">
+  <body class="" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -24,18 +24,18 @@
     </a>
     <div class="tocify-wrapper">
       <!-- <img alt="undefined" class="undefined" src="images/logo.png"> -->
+      <h2 style="text-align:center;color:#FAFAFA;">
+        <span style="color:#ffb300;">Events</span><span style="color:#b0bec5;">254</span>
+      </h2>
+      <small style="color:#FAFAFA;text-align:center;display:block;padding-bottom:15px;">API Documentation version 0.1.0</small>
       <!-- <span style="margin-top: 10px !important; margin-bottom: 10px !important;"></span> -->
       
         <div class="lang-selector">
           
-            <a href="#" data-language-name="typescript">typescript</a>
-          
-            <a href="#" data-language-name="json">json</a>
-          
         </div>
       
       
-        <div class="search">
+        <div class="search" style="margin-bottom: 10px;">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
         <ul class="search-results"></ul>
@@ -53,6 +53,36 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
+        
+          <h1 id="introduction">Introduction</h1>
+<p>Welcome to the <strong>Events254 API</strong>. This is an api that provides access to a curate list of kenyan events happening in different locations and all through the year. We enable api consumers to query for data based on date and location so as to be able to provided relevant information for various purposes.</p>
+<p>We also provide access to information about different events location based on the events help at the location. From geocodes to twitter feed about the location, we enable developers have access to rich event location information.</p>
+<p>Currently the API is in <strong><code>version 0.1.0</code></strong> with the following features available:</p>
+<ol>
+<li>Query for a list of events with pagination option.</li>
+<li>Get profile information about an event.</li>
+<li>App verification using appId and appSecret. This is a basic authentication.</li>
+</ol>
+<p>As you can see its very basic but soon we will release a Roadmap for the features to be released on <strong><code>version 1.0.0</code></strong> of the API.</p>
+<aside class="warning">
+The API server does not allow CORS. Therefore the API can not be accessed directly on the browser. This is due to security reason and data privacy reasons.
+</aside>
+
+<p>The API can be accessed using any http-client library, any language and Frameworks. These include:</p>
+<ul>
+<li><strong>curl</strong></li>
+<li><strong>Node.js</strong>: you can use <code>request</code>, <code>superagent</code>, <code>http</code>, <code>restify-client</code> and many other libraries on npm</li>
+<li><strong>Python</strong>: you can use <code>request</code>, <code>urllib2</code>, and many other python libraries</li>
+<li><strong>Java</strong></li>
+<li><strong>Scala</strong></li>
+<li><strong>PHP</strong></li>
+</ul>
+<p><em>and many more other languages.</em></p>
+<p><br /></p>
+<p><span style="font-size:3em; color:#ffa000;text-align:center;display:block;">
+<i class="fas fa-child fa-pulse"></i> Happy Coding...
+</span></p>
+
         
           <h1 id="authentication-module">Authentication Module</h1>
 <p>The Events254 API provides developer authentication and authorization. It will also provide user authentication
@@ -446,10 +476,6 @@ err.message = e.message || <span class="hljs-string">'Something went wrong while
       <div class="dark-box">
         
           <div class="lang-selector">
-            
-              <a href="#" data-language-name="typescript">typescript</a>
-            
-              <a href="#" data-language-name="json">json</a>
             
           </div>
         
