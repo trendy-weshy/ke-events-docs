@@ -5,8 +5,7 @@ language_tabs:
   - json
 
 toc_footers:
-  - <a href='mailto:waweruj00@gmail.com' target='__blank'>Request for a Developer Key</a>
-  - <a href='mailto:wambugu.john.waweru@outlook.com' target='__blank'>Something went wrong ? Contact Developer</a>
+  - <a href='mailto:waweruj00@gmail.com' target='__blank' style='font-size:14px;text-align:center;color:#fb8c00;display:block;text-decoration:none;'><i class='fas fa-connectdevelop'></i> Contact Developer</a>
   # - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:

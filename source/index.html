@@ -25,6 +25,8 @@ under the License.
     <%- stylesheet_link_tag('print', 'print') %>
     <%- stylesheet_link_tag('highlight-' + current_page.data.highlight_theme, 'screen, print') %>
     <%- javascript_include_tag('all') %>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
   </head>
 
   <body class="<%= page_classes %>" data-languages="<%= JSON.stringify(langs) %>">

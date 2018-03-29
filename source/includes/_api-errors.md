@@ -2,21 +2,14 @@
 
 This sections all the types of Errors the Api can generate. Some are outside the scope of the API so we will just mention them. Some of the errors out of scope is Database related Errors, Server related Errors and Code related Errors.
 
-> The data structure of an API Error.
-
-```typescript
-interface ApiError extends Error /* Node.js Error (const err = new Error();) */ {
-    name: string;
-    status: number; // HTTP Status
-    message: string;
-    level: 'error' | 'info' | 'warning'
-}
-```
-
 > Example of CreationError
 
 ```typescript
-// Errors out so as to support database generated errors and api generated errors
+/*
+ * Errors out so as to support database \
+ * generated errors and api generated errors
+ */
+
 const err: any = new Error();
 err.status = 500;
 err.level = 'error';
@@ -26,29 +19,16 @@ err.message = e.message || 'Something went wrong while saving events';
 throw err;
 ```
 
-> Example of QueryError
+> The data structure of an API Error.
 
 ```typescript
-const err: any = new Error();
-err.name = 'QueryError';
-err.message = 'Could not get because of incorrect query params. Please check /docs';
-err.status = 500;
-err.level = 'error';
-throw err;
+interface ApiError extends Error { /* extends Node.js Error */
+    name: string;
+    status: number; // HTTP Status Code
+    message: string;
+    level: 'error' | 'info' | 'warning'
+}
 ```
-
->Example of EmptyRecord
-
-```typescript
-const err = new Error()
-err.name = 'EmptyRecord';
-err.message = 'No record was found in the database';
-err.status = 404;
-err.level = 'warning';
-throw err;
-```
-
-## Internal Errors
 
 Name | level | status |  Meaning
 ---------- | ------- | -------

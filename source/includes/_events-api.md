@@ -3,10 +3,6 @@
 This is the main module for the api as it serves Kenyan events data. It powers Events254 app.
 
 ```typescript
-/**
- * The object below represents an event queried from the db.
- * It is meant to explain an events data structure.
- */
 interface Event {
     "_id": string, // Database ID
     "link": string, // HTTP link to learn more about the event
@@ -25,9 +21,17 @@ interface Event {
 };
 ```
 
-<aside class="warning">
+<aside class="notice">
     Please note that for every request you make you require the following headers included: **x-auth-app-id** and **x-auth-app-token**. Please visit the <a href="/#authentication-module" style='color: white;text-decoration: none;font-weight: 500;text-shadow: none;'>The Authentication Section</a> for more.
 </aside>
+
+List of Routes Available
+
+1. **[GET]** `/api/v1/events/q/:by` - Query for a paginated list of events
+2. **[GET]** `/api/v1/events/get/:by` - Get a list of events
+3. **[GET]** `/api/v1/events/location` - Get a list of Event Location
+4. **[GET]** `/api/v1/events/ping` - Test Events API
+5. **[GET]** `/api/v1/events/:id` - Get a single event
 
 ## Test Events API
 
