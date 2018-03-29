@@ -19,8 +19,8 @@ The API server does not allow CORS. Therefore the API can not be accessed direct
 The API can be accessed using any http-client library, any language and Frameworks. These include:
 
 - **curl**
-- **Node.js**: you can use `request`, `superagent`, `http`, `restify-client` and many other libraries on npm
-- **Python**: you can use `request`, `urllib2`, and many other python libraries
+- **Node.js**: you can use `request`, `superagent`, `http`, `restify-client` or any other http client library
+- **Python**: you can use `request`, `urllib2`, or any other python libraries
 - **Java**
 - **Scala**
 - **PHP**
@@ -29,6 +29,6 @@ _and many more other languages._
 
 <br />
 
-<span style="font-size:3em; color:#ffa000;text-align:center;display:block;">
-<i class="fas fa-child fa-pulse"></i> Happy Coding...
+<span style="font-size:1.7em; color:#ffa000;text-align:center;display:block;">
+<i class="fas fa-child fa-pulse fa-3x"></i> Happy Coding ...
 </span>

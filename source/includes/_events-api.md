@@ -22,7 +22,7 @@ interface Event {
 ```
 
 <aside class="notice">
-    Please note that for every request you make you require the following headers included: **x-auth-app-id** and **x-auth-app-token**. Please visit the <a href="/#authentication-module" style='color: white;text-decoration: none;font-weight: 500;text-shadow: none;'>The Authentication Section</a> for more.
+    Please note that for every request you make you require the following header included: **x-auth-app: [api_key]**. Please visit the <a href="#authentication-module" style='color: white;text-decoration: none;font-weight: 500;text-shadow: none;'>The Authentication Section</a> for more.
 </aside>
 
 List of Routes Available
@@ -64,7 +64,7 @@ interface PingObject {
 Parameter | DataType | Description
 --------- | -------- | -----------
 **payload** | string | A Base64 string
-**timestamp** | Date | A Date to LocaleDateString
+**timestamp** | Date | A Date in ISODateString
 
 ## Get list of Events
 
@@ -94,7 +94,7 @@ Parameter | Description | Status
 
 ### Response
 
-If the request is successful, the route will return a list of [**Events**](/#events-api-module). No pagination is done. For server paginated records please visit the **Query list of Events** section for more about this.
+If the request is successful, the route will return a list of [**Events**](#events-api-module). No pagination is done. For server paginated records please visit the **Query list of Events** section for more about this.
 
 ## Query list of Events
 
@@ -123,7 +123,7 @@ Parameter | Description       | Status
 
 Parameter | DataType | Description
 --------- | -------- | -----------
-**data** | [**[Event]**](/#events-api-module) | Contains an array of events
+**data** | [**[Event]**](#events-api-module) | Contains an array of events
 **pagination** | Object | *Contains metadata about the data queried*
 **pagination.totalNumOfPages** | number | Total number of pages based on the query provided in the request and number of records per page
 **pagination.totalReturnedItems** | number | Total number of records in the present request
@@ -131,7 +131,7 @@ Parameter | DataType | Description
 
 ## Get list of Event Locations
 
-This route provides a list of event locations by aggregating the all event records. It's the simplest events api endpoint since it has no inputs _(Requesy Body)_, no _Query Strings_ and no _Request Parameters.
+This route provides a list of event locations by aggregating the all event records. It's the simplest events api endpoint since it has no inputs _(Requesy Body)_, no _(Query Strings)_ and no _(Request Parameters)_.
 
 ### Route
 
@@ -157,4 +157,4 @@ Parameter | DataType | Description
 
 ### Response
 
-Returns an [**Event**](/#events-api-module)
+Returns an [**Event**](#events-api-module)

@@ -2,23 +2,6 @@
 
 This sections all the types of Errors the Api can generate. Some are outside the scope of the API so we will just mention them. Some of the errors out of scope is Database related Errors, Server related Errors and Code related Errors.
 
-> Example of CreationError
-
-```typescript
-/*
- * Errors out so as to support database \
- * generated errors and api generated errors
- */
-
-const err: any = new Error();
-err.status = 500;
-err.level = 'error';
-err.name = 'CreationError';
-err.message = e.message || 'Something went wrong while saving events';
-
-throw err;
-```
-
 > The data structure of an API Error.
 
 ```typescript
@@ -42,3 +25,5 @@ Name | level | status |  Meaning
 **DecodeError** | _error_ | 500 | Shows that the apps hash secret could not be decoded
 **PaginationError** | _warning_ | 400 | Means there was a problem with trying to paginate from the query provided. Can be due to client expecting excess page that the total number of pages
 **DateRangeError** | _error | 500 | Shows a problem rose when a date range was being configured so as to make the database query valid
+
+If for some reason you experience some error not documented, i.e, CastError, ValidationError, InternalServerError etc. then this is an internal error with the API. If such errors continue after several requests; <a href="mailto:waweruj00@gmail.com" __target="__blank">Make sure to contact the developer</a>
