@@ -14,6 +14,24 @@ as well as user management features with access control in built.
     <a href='mailto:waweruj00@gmail.com' target='__blank' style='color: white;text-decoration: none;font-weight: 500;text-shadow: none;'>Request for a Developer Key</a>
 </aside>
 
+> App Authentication Header Interface _[x-auth-]_
+
+```typescript
+interface AppAuthObject {
+    ['app-id']: string;
+    ['app-token']: string;
+}
+```
+
+> Example app authentication header _[x-auth-]_
+
+```json
+{
+    "x-auth-app-id": "ce8d8973e57b723e7ed38f05",
+    "x-auth-app-token": "9wplAMtYy5Tysa2||E8Er03YwNzdPTjMW8bGDyXFVzeg"
+}
+```
+
 ### Request Headers
 
 Parameter | Description | Status

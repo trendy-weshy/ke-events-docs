@@ -3,31 +3,64 @@
 This is the main module for the api as it serves Kenyan events data. It powers Events254 app.
 
 ```typescript
-    /**
-     * The object below represents an event queried from the db.
-     * It is meant to explain an events data structure.
-     */
-    interface Event {
-        "_id": string, // Database ID
-        "link": string, // HTTP link to learn more about the event
-        "image": string, // An image link for the event's poster
-        "title": string, // The title of the event
-        "about": string, // An overview of the Events and its description
-        "map": string, // A google maps link to the location of the event
-        "location": string, // Where the event will be held (A Formatted Address)
-        "twitter": string, // Twitter link for sharing about the event
-        "whatsapp": string, // Deeplink for sending whatsapp message about the event
-        "google_plus": string, // Google plus link for sharing about the event
-        "start": Date, // When the event is supposed to start (isISOString)
-        "end": Date, // When the event is supposed to end (isISOString)
-        "createdAt": Date, // When was the event recorded to the database (isISOString)
-        "updatedAt": Date // When was the event record last updated (isISOString)
-    };
+/**
+ * The object below represents an event queried from the db.
+ * It is meant to explain an events data structure.
+ */
+interface Event {
+    "_id": string, // Database ID
+    "link": string, // HTTP link to learn more about the event
+    "image": string, // An image link for the event's poster
+    "title": string, // The title of the event
+    "about": string, // An overview of the Events and its description
+    "map": string, // A google maps link to the location of the event
+    "location": string, // Where the event will be held (A Formatted Address)
+    "twitter": string, // Twitter link for sharing about the event
+    "whatsapp": string, // Deeplink for sending whatsapp message about the event
+    "google_plus": string, // Google plus link for sharing about the event
+    "start": Date, // When the event is supposed to start (isISOString)
+    "end": Date, // When the event is supposed to end (isISOString)
+    "createdAt": Date, // When was the event recorded to the database (isISOString)
+    "updatedAt": Date // When was the event record last updated (isISOString)
+};
 ```
 
 <aside class="warning">
     Please note that for every request you make you require the following headers included: **x-auth-app-id** and **x-auth-app-token**. Please visit the <a href="/#authentication-module" style='color: white;text-decoration: none;font-weight: 500;text-shadow: none;'>The Authentication Section</a> for more.
 </aside>
+
+## Test Events API
+
+Use this route if you want to test whether the API is online and working.
+
+> Ping interface
+
+```typescript
+interface PingObject {
+    payload: string;
+    timestamp: Date;
+}
+```
+
+> Example ping response
+
+```json
+{
+    "payload": "0chwzYWLATM34L6/2tfb",
+    "timestamp": "2018-03-29T01:05:42.269Z"
+}
+```
+
+### Route
+
+`[GET] /api/v1/events/ping`
+
+### Response Object
+
+Parameter | DataType | Description
+--------- | -------- | -----------
+**payload** | string | A Base64 string
+**timestamp** | Date | A Date to LocaleDateString
 
 ## Get list of Events
 
