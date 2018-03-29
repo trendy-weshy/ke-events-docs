@@ -358,11 +358,13 @@ html, body {
     font-size: 30px;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid transparent;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    border-top: 1px solid #ddd;
-    background-image: linear-gradient(to bottom, #fff, #f9f9f9);
+    border-top: 1px solid transparent;
+    background-image: linear-gradient(to bottom, #F57F17, #FF6F00);
+    text-shadow: none;
+    color: #FAFAFA;
   }
 
   h1:first-child, div:first-child + h1 {

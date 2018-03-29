@@ -12,12 +12,12 @@ var rename = require("gulp-rename");
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var gutil = require('gulp-util');
+var runSeq = require('run-sequence');
 
 var del = require('del');
 var highlight = require('highlight.js');
 var marked = require('marked');
 var yaml = require('js-yaml');
-
 
 var renderer = new marked.Renderer();
 var COMPRESS = true;
@@ -129,9 +129,9 @@ gulp.task('NO_COMPRESS', function() {
   COMPRESS = false;
 });
 
-gulp.task('default', ['clean', 'fonts', 'images', 'highlightjs', 'js', 'sass', 'html']);
+gulp.task('default', runSeq('clean', ['fonts', 'images', 'highlightjs', 'js', 'sass', 'html']));
 
-gulp.task('serve', ['NO_COMPRESS', 'default'], function() {
+gulp.task('dev:server', function() {
 
   gulp.watch(['./source/*.html', './source/includes/**/*'], ['html']);
   gulp.watch('./source/javascripts/**/*', ['js']);
@@ -147,3 +147,5 @@ gulp.task('serve', ['NO_COMPRESS', 'default'], function() {
 
   gulp.src(__filename).pipe(open({uri: 'http://localhost:4567'}));
 });
+
+gulp.task('serve', runSeq('NO_COMPRESS', 'default', 'dev:server'));

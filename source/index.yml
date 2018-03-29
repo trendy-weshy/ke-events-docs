@@ -1,18 +1,17 @@
-title: API Reference
+title: Events254 API Documentation
 
 language_tabs:
-  - bash
-  - ruby
-  - python
-  - javascript
+  - TypeScript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - <a href='mailto:waweruj00@gmail.com' target='__blank'>Request for a Developer Key</a>
+  # - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - main
-  - _errors
+  - _authentication
+  - _events-api
+  # - main
+  # - _errors
 
 search: true
 
