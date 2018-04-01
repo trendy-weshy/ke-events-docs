@@ -10,7 +10,7 @@ Currently the API is in **`version 0.1.0`** with the following features availabl
 2. Get profile information about an event.
 3. App verification using appId and appSecret. This is a basic authentication.
 
-As you can see its very basic but soon we will release a Roadmap for the features to be released on **`version 1.0.0`** of the API.
+As you can see its very basic but soon we will release a [Roadmap](#roadmap) for the features to be released on **`version 1.0.0`** of the API.
 
 <aside class="warning">
 The API server does not allow CORS. Therefore the API can not be accessed directly on the browser. This is due to security reason and data privacy reasons.

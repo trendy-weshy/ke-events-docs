@@ -16,9 +16,9 @@ as well as user management features with access control in built.
 
 ### Request Headers
 
-Parameter | Description
---------- | -----------
-**x-auth-app** | This should contain your api key
+Parameter | Data Type | Description
+--------- | --------- | -----------
+**x-auth-app** | _String_ | This should contain your api key
 
 <aside class="notice">
     The above stated header is required in order to consume the API. If you haven't yet got your **ApiKey**, please contact the developer:- <a href='mailto:waweruj00@gmail.com' target='__blank' style='color: white;text-decoration: none;font-weight: 500;text-shadow: none;'>Request for a Developer Key</a>

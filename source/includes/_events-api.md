@@ -63,7 +63,7 @@ interface PingObject {
 
 Parameter | DataType | Description
 --------- | -------- | -----------
-**payload** | string | A Base64 string
+**payload** | String | A Base64 string
 **timestamp** | Date | A Date in ISODateString
 
 ## Get list of Events
@@ -86,7 +86,7 @@ Parameter | Description
 
 This is a querystring i.e. /?key=1&key2=the
 
-Parameter | Description | Status  
+Parameter | Description | Status
 --------- | ----------- | --------
 **event_loc** | Name of location | *To be provided when the request parameter **by** above is **location***
 **start_date** | Begin date of an event | *To be provided when the request parameter **by** above is **date** and should follow the format: **MM-DD-YYYY***
@@ -119,15 +119,21 @@ Parameter | Description       | Status
 **start_date** | Begin date of an event | *To be provided when the request parameter **by** above is `date` and should follow the format: `MM-DD-YYYY`*
 **end_date** | End date of an event | *Can be provided when the request parameter **by** above is `date` and should follow the format: `MM-DD-YYYY`.* This field is an **Optional Query**
 
+**PLEASE NOTE:**
+
+The **`curr_page`** querystring option should follow the zero-index rule.
+
+That is, if your at the *first page* on your app then **`curr_page`** should be **`0`**. If your on your *fourth page* in your app **`curr_page`** should be **`3`**
+
 ### Response Object
 
 Parameter | DataType | Description
 --------- | -------- | -----------
-**data** | [**[Event]**](#events-api-module) | Contains an array of events
+**data** | Array[**[Event]**](#events-api-module) | Contains an array of events
 **pagination** | Object | *Contains metadata about the data queried*
-**pagination.totalNumOfPages** | number | Total number of pages based on the query provided in the request and number of records per page
-**pagination.totalReturnedItems** | number | Total number of records in the present request
-**pagination.isLastPage** | boolean | Shows if the request has accessed the last page, therefore no more records can be queried for using the same query.
+**pagination.totalNumOfPages** | Number | Total number of pages based on the query provided in the request and number of records per page
+**pagination.totalReturnedItems** | Number | Total number of records in the present request
+**pagination.isLastPage** | Boolean | Shows if the request has accessed the last page, therefore no more records can be queried for using the same query.
 
 ## Get list of Event Locations
 
@@ -153,8 +159,8 @@ Use this route if you want a single event object.
 
 Parameter | DataType | Description
 --------- | -------- | -----------
-**id** | string | The events **Database ID**
+**id** | String | The events **Database ID**
 
 ### Response
 
-Returns an [**Event**](#events-api-module)
+Returns an Array[**Events**](#events-api-module)
