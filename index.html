@@ -45,7 +45,7 @@
       
         <ul class="toc-footer">
           
-            <li><a href='mailto:waweruj00@gmail.com' target='__blank' style='font-size:14px;text-align:center;color:#fb8c00;display:block;text-decoration:none;'><i class='fas fa-connectdevelop'></i> Contact Developer</a></li>
+            <li><a href='mailto:waweruj00@gmail.com' target='__blank' style='font-size:14px;text-align:center;color:#fb8c00;display:block;text-decoration:none;'><i class='fas fa-envelope'></i> Contact Developer</a></li>
           
         </ul>
       
@@ -63,7 +63,7 @@
 <li>Get profile information about an event.</li>
 <li>App verification using appId and appSecret. This is a basic authentication.</li>
 </ol>
-<p>As you can see its very basic but soon we will release a Roadmap for the features to be released on <strong><code>version 1.0.0</code></strong> of the API.</p>
+<p>As you can see its very basic but soon we will release a <a href="#roadmap">Roadmap</a> for the features to be released on <strong><code>version 1.0.0</code></strong> of the API.</p>
 <aside class="warning">
 The API server does not allow CORS. Therefore the API can not be accessed directly on the browser. This is due to security reason and data privacy reasons.
 </aside>
@@ -71,16 +71,16 @@ The API server does not allow CORS. Therefore the API can not be accessed direct
 <p>The API can be accessed using any http-client library, any language and Frameworks. These include:</p>
 <ul>
 <li><strong>curl</strong></li>
-<li><strong>Node.js</strong>: you can use <code>request</code>, <code>superagent</code>, <code>http</code>, <code>restify-client</code> and many other libraries on npm</li>
-<li><strong>Python</strong>: you can use <code>request</code>, <code>urllib2</code>, and many other python libraries</li>
+<li><strong>Node.js</strong>: you can use <code>request</code>, <code>superagent</code>, <code>http</code>, <code>restify-client</code> or any other http client library</li>
+<li><strong>Python</strong>: you can use <code>request</code>, <code>urllib2</code>, or any other python libraries</li>
 <li><strong>Java</strong></li>
 <li><strong>Scala</strong></li>
 <li><strong>PHP</strong></li>
 </ul>
 <p><em>and many more other languages.</em></p>
 <p><br /></p>
-<p><span style="font-size:3em; color:#ffa000;text-align:center;display:block;">
-<i class="fas fa-child fa-pulse"></i> Happy Coding...
+<p><span style="font-size:1.7em; color:#ffa000;text-align:center;display:block;">
+<i class="fas fa-child fa-pulse fa-3x"></i> Happy Coding ...
 </span></p>
 
         
@@ -93,48 +93,29 @@ as well as user management features with access control in built.</p>
 
 <h2 id="developer-apps-api">Developer Apps API</h2>
 <aside class="notice">
-    You require an <strong>appID</strong> and <strong>appSecret</strong> in order to access the API. They are provided by the developer.
+    You require an <strong>ApiKey</strong> in order to access the API. They are provided by the developer.
     <a href='mailto:waweruj00@gmail.com' target='__blank' style='color: white;text-decoration: none;font-weight: 500;text-shadow: none;'>Request for a Developer Key</a>
 </aside>
 
-<blockquote>
-<p>App Authentication Header Interface <em>[x-auth-]</em></p>
-</blockquote>
-<pre class="highlight typescript"><code><span class="hljs-keyword">interface</span> AppAuthObject {
-    [<span class="hljs-string">'app-id'</span>]: <span class="hljs-built_in">string</span>;
-    [<span class="hljs-string">'app-token'</span>]: <span class="hljs-built_in">string</span>;
-}</code></pre><blockquote>
-<p>Example app authentication header <em>[x-auth-]</em></p>
-</blockquote>
-<pre class="highlight json"><code>{
-    <span class="hljs-attr">"x-auth-app-id"</span>: <span class="hljs-string">"ce8d8973e57b723e7ed38f05"</span>,
-    <span class="hljs-attr">"x-auth-app-token"</span>: <span class="hljs-string">"9wplAMtYy5Tysa2||E8Er03YwNzdPTjMW8bGDyXFVzeg"</span>
-}</code></pre><h3 id="request-headers">Request Headers</h3>
+<h3 id="request-headers">Request Headers</h3>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
+<th>Data Type</th>
 <th>Description</th>
-<th>Status</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>x-auth-app-id</strong></td>
-<td>This should contain your app id</td>
-<td><strong>required</strong></td>
-</tr>
-<tr>
-<td><strong>x-auth-app-token</strong></td>
-<td>This should container your app token</td>
-<td><strong>required</strong></td>
+<td><strong>x-auth-app</strong></td>
+<td><em>String</em></td>
+<td>This should contain your api key</td>
 </tr>
 </tbody>
 </table>
 <aside class="notice">
-    The above stated headers are required in order to consume the API. It ensures that the requests being sent to the API are secure and from trusted sources.
-    If you haven&#39;t yet got your <strong>appID</strong> and <strong>appSecret</strong>, please contact the developer:-
-    <a href='mailto:waweruj00@gmail.com' target='__blank' style='color: white;text-decoration: none;font-weight: 500;text-shadow: none;'>Request for a Developer Key</a>
+    The above stated header is required in order to consume the API. If you haven&#39;t yet got your <strong>ApiKey</strong>, please contact the developer:- <a href='mailto:waweruj00@gmail.com' target='__blank' style='color: white;text-decoration: none;font-weight: 500;text-shadow: none;'>Request for a Developer Key</a>
 </aside>
 
         
@@ -156,7 +137,7 @@ as well as user management features with access control in built.</p>
     <span class="hljs-string">"createdAt"</span>: <span class="hljs-built_in">Date</span>, <span class="hljs-comment">// When was the event recorded to the database (isISOString)</span>
     <span class="hljs-string">"updatedAt"</span>: <span class="hljs-built_in">Date</span> <span class="hljs-comment">// When was the event record last updated (isISOString)</span>
 };</code></pre><aside class="notice">
-    Please note that for every request you make you require the following headers included: <strong>x-auth-app-id</strong> and <strong>x-auth-app-token</strong>. Please visit the <a href="/#authentication-module" style='color: white;text-decoration: none;font-weight: 500;text-shadow: none;'>The Authentication Section</a> for more.
+    Please note that for every request you make you require the following header included: <strong>x-auth-app: [api_key]</strong>. Please visit the <a href="#authentication-module" style='color: white;text-decoration: none;font-weight: 500;text-shadow: none;'>The Authentication Section</a> for more.
 </aside>
 
 <p>List of Routes Available</p>
@@ -195,13 +176,13 @@ as well as user management features with access control in built.</p>
 <tbody>
 <tr>
 <td><strong>payload</strong></td>
-<td>string</td>
+<td>String</td>
 <td>A Base64 string</td>
 </tr>
 <tr>
 <td><strong>timestamp</strong></td>
 <td>Date</td>
-<td>A Date to LocaleDateString</td>
+<td>A Date in ISODateString</td>
 </tr>
 </tbody>
 </table>
@@ -232,7 +213,7 @@ as well as user management features with access control in built.</p>
 <tr>
 <th>Parameter</th>
 <th>Description</th>
-<th>Status  </th>
+<th>Status</th>
 </tr>
 </thead>
 <tbody>
@@ -254,7 +235,7 @@ as well as user management features with access control in built.</p>
 </tbody>
 </table>
 <h3 id="response">Response</h3>
-<p>If the request is successful, the route will return a list of <a href="/#events-api-module"><strong>Events</strong></a>. No pagination is done. For server paginated records please visit the <strong>Query list of Events</strong> section for more about this.</p>
+<p>If the request is successful, the route will return a list of <a href="#events-api-module"><strong>Events</strong></a>. No pagination is done. For server paginated records please visit the <strong>Query list of Events</strong> section for more about this.</p>
 <h2 id="query-list-of-events">Query list of Events</h2>
 <p>This route provides a list of events based on a <em>querystring</em> and uses either <strong>location</strong> or <strong>date</strong> as the query basis. This route is designed to returned paginated records. For each page requested the API provides a limited number of records.</p>
 <h3 id="route">Route</h3>
@@ -306,6 +287,9 @@ as well as user management features with access control in built.</p>
 </tr>
 </tbody>
 </table>
+<p><strong>PLEASE NOTE:</strong></p>
+<p>The <strong><code>curr_page</code></strong> querystring option should follow the zero-index rule.</p>
+<p>That is, if your at the <em>first page</em> on your app then <strong><code>curr_page</code></strong> should be <strong><code>0</code></strong>. If your on your <em>fourth page</em> in your app <strong><code>curr_page</code></strong> should be <strong><code>3</code></strong></p>
 <h3 id="response-object">Response Object</h3>
 <table>
 <thead>
@@ -318,7 +302,7 @@ as well as user management features with access control in built.</p>
 <tbody>
 <tr>
 <td><strong>data</strong></td>
-<td><a href="/#events-api-module"><strong>[Event]</strong></a></td>
+<td>Array<a href="#events-api-module"><strong>[Event]</strong></a></td>
 <td>Contains an array of events</td>
 </tr>
 <tr>
@@ -328,23 +312,23 @@ as well as user management features with access control in built.</p>
 </tr>
 <tr>
 <td><strong>pagination.totalNumOfPages</strong></td>
-<td>number</td>
+<td>Number</td>
 <td>Total number of pages based on the query provided in the request and number of records per page</td>
 </tr>
 <tr>
 <td><strong>pagination.totalReturnedItems</strong></td>
-<td>number</td>
+<td>Number</td>
 <td>Total number of records in the present request</td>
 </tr>
 <tr>
 <td><strong>pagination.isLastPage</strong></td>
-<td>boolean</td>
+<td>Boolean</td>
 <td>Shows if the request has accessed the last page, therefore no more records can be queried for using the same query.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="get-list-of-event-locations">Get list of Event Locations</h2>
-<p>This route provides a list of event locations by aggregating the all event records. It&#39;s the simplest events api endpoint since it has no inputs <em>(Requesy Body)</em>, no <em>Query Strings</em> and no _Request Parameters.</p>
+<p>This route provides a list of event locations by aggregating the all event records. It&#39;s the simplest events api endpoint since it has no inputs <em>(Requesy Body)</em>, no <em>(Query Strings)</em> and no <em>(Request Parameters)</em>.</p>
 <h3 id="route">Route</h3>
 <p><code>[GET] /api/v1/events/location</code></p>
 <h3 id="response">Response</h3>
@@ -365,32 +349,18 @@ as well as user management features with access control in built.</p>
 <tbody>
 <tr>
 <td><strong>id</strong></td>
-<td>string</td>
+<td>String</td>
 <td>The events <strong>Database ID</strong></td>
 </tr>
 </tbody>
 </table>
 <h3 id="response">Response</h3>
-<p>Returns an <a href="/#events-api-module"><strong>Event</strong></a></p>
+<p>Returns an Array<a href="#events-api-module"><strong>Events</strong></a></p>
 
         
           <h1 id="api-errors">API Errors</h1>
 <p>This sections all the types of Errors the Api can generate. Some are outside the scope of the API so we will just mention them. Some of the errors out of scope is Database related Errors, Server related Errors and Code related Errors.</p>
 <blockquote>
-<p>Example of CreationError</p>
-</blockquote>
-<pre class="highlight typescript"><code><span class="hljs-comment">/*
- * Errors out so as to support database \
- * generated errors and api generated errors
- */</span>
-
-<span class="hljs-keyword">const</span> err: <span class="hljs-built_in">any</span> = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>();
-err.status = <span class="hljs-number">500</span>;
-err.level = <span class="hljs-string">'error'</span>;
-err.name = <span class="hljs-string">'CreationError'</span>;
-err.message = e.message || <span class="hljs-string">'Something went wrong while saving events'</span>;
-
-<span class="hljs-keyword">throw</span> err;</code></pre><blockquote>
 <p>The data structure of an API Error.</p>
 </blockquote>
 <pre class="highlight typescript"><code><span class="hljs-keyword">interface</span> ApiError <span class="hljs-keyword">extends</span> Error { <span class="hljs-comment">/* extends Node.js Error */</span>
@@ -464,12 +434,17 @@ err.message = e.message || <span class="hljs-string">'Something went wrong while
 </tr>
 <tr>
 <td><strong>DateRangeError</strong></td>
-<td>_error</td>
+<td><em>error</em></td>
 <td>500</td>
 <td>Shows a problem rose when a date range was being configured so as to make the database query valid</td>
 </tr>
 </tbody>
 </table>
+<p>If for some reason you experience some error not documented, i.e, CastError, ValidationError, InternalServerError etc. then this is an internal error with the API. If such errors continue after several requests; <a href="mailto:waweruj00@gmail.com" __target="__blank">Make sure to contact the developer</a></p>
+
+        
+          <h1 id="roadmap">Roadmap</h1>
+<p>Sorry, but this content is being developed and will be coming soon.</p>
 
         
       </div>
